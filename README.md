@@ -4,7 +4,7 @@ URL::Normalize - Normalize/optimize URLs.
 
 # VERSION
 
-Version 0.01
+Version 0.02
 
 # SYNOPSIS
 
@@ -87,17 +87,52 @@ Removes well-known directory indexes, eg. "index.html", "default.asp" etc.
 Sorts the query parameters alphabetically. Uppercased parameters will be
 lower cased during sorting only.
 
+## remove\_empty\_query()
+
+Removes empty query from the URL.
+
+Example:
+
+    my $Normalizer = URL::Normalize->new(
+        url => 'http://www.example.com/foo?',
+    );
+
+    $Normalizer->remove_empty_query();
+
+    print $Normalize->get_url(); # http://www.example.com/foo
+
+## remove\_fragment()
+
+Removes fragments from the URL. This is dangerous, as lot of AJAX-ified
+applications uses this part.
+
+Example:
+
+    my $Normalizer = URL::Normalize->new(
+        url => 'http://www.example.com/bar.html#section1',
+    );
+
+    $Normalizer->remove_fragment();
+
+    print $Normalizer->get_url(); # http://www.example.com/bar.html
+
+## remove\_duplicate\_slashes()
+
+Remove duplicate slashes from the URL.
+
+Example:
+
+    my $Normalizer = URL::Normalize->new(
+        url => 'http://www.example.com/foo//bar.html',
+    );
+
+    $Normalizer->remove_duplicate_slashes();
+
+    print $Normalizer->get_url(); # http://www.example.com/foo/bar.html
+
 ## do\_all()
 
-Performs all of the normalization methods;
-
-    * make_canonical()
-
-    * remove_dot_segments()
-
-    * remove_directory_index()
-
-    * sort_query_parameters()
+Performs all of the normalization methods.
 
 # SEE ALSO
 

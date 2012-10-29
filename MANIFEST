@@ -1,8 +1,6 @@
-Build.pl
+Build.PL
 Changes
-ignore.txt
 lib/URL/Normalize.pm
-Makefile.PL
 MANIFEST			This list of files
 README
 README.md
@@ -11,7 +9,13 @@ t/10-canonical.t
 t/20-remove-dot-segments.t
 t/30-remove-directory-index.t
 t/40-sort-query-parameters.t
+t/50-remove-empty-query.t
+t/60-remove-fragment.t
+t/70-remove-duplicate-slashes.t
 t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+Makefile.PL
+META.yml
+META.json
