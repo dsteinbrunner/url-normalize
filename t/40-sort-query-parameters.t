@@ -16,7 +16,6 @@ BEGIN {
         'http://www.example.com/?a=1&b=2&c=3'                       => 'http://www.example.com/?a=1&b=2&c=3',
         'http://www.example.com/?b=2&c=3&a=0&A=1'                   => 'http://www.example.com/?a=0&A=1&b=2&c=3',
         'http://www.example.com/index.html?c=3&b=2&a=0&A=1&a=4'     => 'http://www.example.com/index.html?a=0&A=1&a=4&b=2&c=3',
-        'http://www.example.com/index.html?c=3&b=2&a=0&A=1&a=4&a=4' => 'http://www.example.com/index.html?a=0&A=1&a=4&b=2&c=3',
     );
 
     foreach ( keys %urls ) {
