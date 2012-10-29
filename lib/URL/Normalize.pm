@@ -249,7 +249,7 @@ sub remove_directory_index {
 Sorts the query parameters alphabetically.
 
 Uppercased parameters will be lower cased during sorting only, and if there are
-multiple values for a parameters, the key/value-pairs will be sorted as well.
+multiple values for a parameter, the key/value-pairs will be sorted as well.
 
 Example:
 
