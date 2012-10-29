@@ -8,11 +8,11 @@ URL::Normalize - Normalize/optimize URLs.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use URI qw();
 use URI::QueryParam qw();
@@ -76,7 +76,7 @@ sub _build_URI {
 
 =head2 new( %opts )
 
-Constructs a new URL::Normalizer object. Takes a hash as input argument;
+Constructs a new URL::Normalize object. Takes a hash as input argument;
 
     my $Normalizer = URL::Normalize->new(
         url  => '/foobar.html',            # required
@@ -92,13 +92,17 @@ Constructs a new URL::Normalizer object. Takes a hash as input argument;
 Just a shortcut for URI::URL->new()->canonical()->as_string(), and involves
 the following steps (at least):
 
-    * Converts the scheme and host to lower case.
+=over 4
 
-    * Capitalizes letters in escape sequences.
+=item * Converts the scheme and host to lower case.
 
-    * Decodes percent-encoded octets of unreserved characters.
+=item * Capitalizes letters in escape sequences.
 
-    * Removes the default port (port 80 for http).
+=item * Decodes percent-encoded octets of unreserved characters.
+
+=item * Removes the default port (port 80 for http).
+
+=back
 
 Example:
 
@@ -285,7 +289,7 @@ sub sort_query_parameters {
 
     foreach my $sort_key ( sort keys %new_query_hash ) {
         foreach my $value ( sort keys %{$new_query_hash{$sort_key}} ) {
-            foreach my $key ( sort @{$new_query_hash{$sort_key}->{$value}} ) {
+            foreach my $key ( @{$new_query_hash{$sort_key}->{$value}} ) {
                 $query_string .= $key . '=' . $value . '&';
             }
         }
@@ -414,15 +418,23 @@ sub do_all {
 
 =head1 SEE ALSO
 
-L<URI>
+=over 4
 
-L<URI::URL>
+=item * L<URI>
 
-L<URI::QueryParam>
+=item * L<URI::URL>
 
-L<RFC 3986: Uniform Resource Indentifier|http://tools.ietf.org/html/rfc3986>
+=item * L<URI::QueryParam>
 
-L<Wikipedia: URL normalization|http://en.wikipedia.org/wiki/URL_normalization>
+=item * RFC 3986: Uniform Resource Indentifier
+
+L<http://tools.ietf.org/html/rfc3986>
+
+=item * Wikipedia: URL normalization
+
+L<http://en.wikipedia.org/wiki/URL_normalization>
+
+=back
 
 =head1 AUTHOR
 
