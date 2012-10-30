@@ -3,6 +3,7 @@ Revision history for URL::Normalize
 
 0.07    2012-10-30
         - Renamed several of the tests' filename.
+        - Improved the documentation.
 
 
 0.06    2012-10-30
