@@ -4,7 +4,7 @@ URL::Normalize - Normalize/optimize URLs.
 
 # VERSION
 
-Version 0.06
+Version 0.07
 
 # SYNOPSIS
 
@@ -179,8 +179,7 @@ Example:
 
 ## remove\_fragment()
 
-Removes fragments from the URL. This is dangerous, as lot of AJAX-ified
-applications uses this part.
+Removes fragments from the URL.
 
 Example:
 
@@ -209,6 +208,15 @@ Example:
 ## do\_all()
 
 Performs all of the normalization methods mentioned above.
+
+# PERFORMANCE
+
+There's probably possible to improve the performance of this module
+considerably, but as premature optimization is evil, I'll wait until the
+functionality and API is stable.
+
+On my MacBook Pro (2.66GHz i7, 8GB RAM) I'm able to run the do\_all() method on
+more than 1,100 URLs per second. That should be enough for everyone. :)
 
 # SEE ALSO
 
