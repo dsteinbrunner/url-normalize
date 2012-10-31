@@ -8,11 +8,11 @@ URL::Normalize - Normalize/optimize URLs.
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 use URI qw();
 use URI::QueryParam qw();
@@ -76,7 +76,7 @@ array or hash);
         'http://www.example.com/?'          => 1,
     }
 
-Above, all the URLs inside the has normalizes to the key if you run these
+Above, all the URLs inside the hash normalizes to the key if you run these
 methods:
 
 =over 4

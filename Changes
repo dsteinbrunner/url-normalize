@@ -1,5 +1,8 @@
 Revision history for URL::Normalize
 
+0.10    2012-10-31
+        - Improved the documentation.
+
 
 0.09    2012-10-31
         - Fixed a bug where a cached URI object was returned from get_URI().
