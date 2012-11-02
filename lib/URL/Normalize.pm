@@ -1,6 +1,6 @@
 package URL::Normalize;
-use 5.008008;
-use Moose;
+use strict;
+use warnings;
 
 =head1 NAME
 
@@ -8,31 +8,14 @@ URL::Normalize - Normalize/optimize URLs.
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 use URI qw();
 use URI::QueryParam qw();
-
-has 'url'  => (
-    isa      => 'Str',
-    is       => 'ro',
-    required => 1,
-    default  => '',
-    reader   => 'get_url',
-    writer   => '_set_url',
-);
-
-has 'base' => (
-    isa      => 'Str',
-    is       => 'ro',
-    required => 0,
-    default  => '',
-    reader   => 'get_base',
-);
 
 =head1 SYNOPSIS
 
@@ -54,6 +37,38 @@ has 'base' => (
     $Normalizer->do_all(); # Perform all the normalizations available
 
     print $Normalizer->get_url();
+
+=cut
+
+sub new {
+    my $class = shift;
+
+    my $self = {
+        url  => undef,
+        base => undef,
+    };
+    bless( $self, $class );
+
+    $self->_init( @_ );
+
+    return $self;
+}
+
+sub _init {
+    my $self = shift;
+    my %opts = @_;
+
+    if ( defined $opts{url} && length $opts{url} ) {
+        $self->{url} = $opts{url};
+    }
+    else {
+        Carp::croak( "The 'url' parameter is required!" );
+    }
+
+    if ( defined $opts{base} && length $opts{base} ) {
+        $self->{base} = $opts{base};
+    }
+}
 
 =head1 DESCRIPTION
 
@@ -114,6 +129,44 @@ sub get_URI {
     my $self = shift;
 
     return URI->new( $self->get_url(), $self->get_base() );
+}
+
+sub _get {
+    my $self = shift;
+    my $key  = shift;
+
+    return $self->{$key} || '';
+}
+
+=head2 get_url()
+
+Returns the current URL.
+
+=cut
+
+sub get_url {
+    my $self = shift;
+
+    return $self->_get( 'url' );
+}
+
+sub _set_url {
+    my $self = shift;
+    my $url  = shift;
+
+    $self->{url} = $url;
+}
+
+=head2 get_base()
+
+Returns the current base.
+
+=cut
+
+sub get_base {
+    my $self = shift;
+
+    return $self->_get( 'base' );
 }
 
 =head2 make_canonical()

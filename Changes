@@ -1,6 +1,13 @@
 Revision history for URL::Normalize
 
-0.10    2012-10-31
+
+0.11    2012-11-02
+        - Removed code which was commented out.
+
+
+0.10    2012-11-02
+        - No longer requires Moose.
+        - Added more tests.
         - Improved the documentation.
 
 
