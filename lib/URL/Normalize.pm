@@ -8,7 +8,7 @@ URL::Normalize - Normalize/optimize URLs.
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
