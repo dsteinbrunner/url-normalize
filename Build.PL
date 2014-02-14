@@ -14,6 +14,11 @@ my $Builder = Module::Build->new(
         'URI::QueryParam' => 0,
     },
     create_makefile_pl  => 'traditional',
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/toreau/url-normalize',
+        },
+    },
 );
 
 $Builder->create_build_script();
